@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.5)
+project(TP7 VERSION 3.5.2 LANGUAGES CXX)
+set(CMAKE_CXX_STANDARD 11)
+add_executable(elise String.cpp TestsElise.cpp)
+add_executable(guillaume String.cpp TestsGuillaume.cpp)
+add_executable(hana String.cpp TestsHana.cpp)
+add_executable(exe String.cpp Tests.cpp)
