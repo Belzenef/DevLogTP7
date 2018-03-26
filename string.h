@@ -1,14 +1,16 @@
 #ifndef STRING_H  // if guard
 #define STRING_H
 
+#include <cstdio>
+
 class string{
   
 // Non-member functions
 //----------------------------------------------------------------------
   // operator+
-  friend string operator+(string);
-  friend string operator+(char*);
-  friend string operator+(char);
+  friend string operator+(string str, string to_add);
+  friend string operator+(string str, char* to_add);
+  friend string operator+(string str, char to_add);
   
 // Member types
 //----------------------------------------------------------------------
@@ -19,7 +21,7 @@ class string{
   
 // Member constants
 //----------------------------------------------------------------------
-	const static size_t MAX_SIZE;
+	const static size_t MAX_SIZE = 100;
   
 // Member functions
 //----------------------------------------------------------------------
@@ -32,9 +34,9 @@ class string{
   ~string();
   
   // Operator=
-  string operator=(string);
-  string operator=(char*);
-  string operator=(char);
+  string operator=(string to_assign);
+  string operator=(char* to_assign);
+  string operator=(char to_assign);
   
   // Capacity
   size_t size() const noexcept;
@@ -53,7 +55,9 @@ class string{
 
 // Non-member functions
 //----------------------------------------------------------------------
-  // operator+
-  string operator+(string);
-  string operator+(char*);
-  string operator+(char);
+// operator+
+string operator+(string str, string to_add);
+string operator+(string str, char* to_add);
+string operator+(string str, char to_add);
+
+#endif
