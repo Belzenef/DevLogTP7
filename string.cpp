@@ -42,9 +42,10 @@
   size_t string::size() const noexcept{
 		return size_;
 	}
-
-  size_t string::length() const noexcept{}
-  size_t string::max_size() const noexcept{}
+  size_t string::length() const noexcept{
+    return size_;}
+  size_t string::max_size() const noexcept{
+    return MAX_SIZE;}
   void string::resize(size_t n, char c){}
   size_t string::capacity() const noexcept{
     return reserved_space_;}
