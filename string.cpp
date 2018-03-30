@@ -10,7 +10,8 @@
   // Constructors
   string::string(char* cstr) {} // From c-string constructor
   string::string(const string& model){ // Copy constructor
-		char* pointer_ = model.pointer_;
+		char* pointer_ = new char;
+		*pointer_ = *model.pointer_;
   	size_t size_ = model.size_;
   	size_t reserved_space_ = model.reserved_space_;
 	} 
@@ -25,7 +26,10 @@
   string string::operator=(char to_assign){}
   
   // Capacity
-  size_t string::size() const noexcept{}
+  size_t string::size() const noexcept{
+		return size_;
+	}
+
   size_t string::length() const noexcept{}
   size_t string::max_size() const noexcept{}
   void string::resize(size_t n, char c){}

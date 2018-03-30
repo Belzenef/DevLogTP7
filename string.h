@@ -39,7 +39,7 @@ class string{
   string operator=(char to_assign);
   
   // Capacity
-  size_t size() const noexcept;
+  size_t size() const noexcept;// returns the size_ of the string
   size_t length() const noexcept;
   size_t max_size() const noexcept;
   void resize(size_t n, char c=' ');
