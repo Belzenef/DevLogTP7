@@ -10,7 +10,8 @@
   // Constructors
   string::string(char* cstr) {} // From c-string constructor
   string::string(const string& model){ // Copy constructor
-		char* pointer_ = model.pointer_;
+		char* pointer_ = new char;
+		*pointer_ = *model.pointer_;
   	size_t size_ = model.size_;
   	size_t reserved_space_ = model.reserved_space_;
 	} 
