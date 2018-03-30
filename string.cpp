@@ -1,5 +1,4 @@
 #include "string.h"
-  
 // Member constants
 //----------------------------------------------------------------------
 	const size_t string::MAX_SIZE;
@@ -22,16 +21,21 @@
     size_=s-1; // same size than cstr without null character '\0'
     reserved_space_=s;
   }
+
   string::string(const string& model){ // Copy constructor
-		char* pointer_ = new char;
-		*pointer_ = *model.pointer_;
-  	size_t size_ = model.size_;
-  	size_t reserved_space_ = model.reserved_space_;
+		size_ = model.size_;
+  	reserved_space_ = model.reserved_space_;
+		char* ptr = new char[reserved_space_];
+		for (int i=0; i<size_ + 1; ++i ){
+			ptr[i]=model.pointer_[i];
+		}
+		pointer_ =ptr;
+  	
 	} 
 
   // Destructor
   string::~string(){
-    delete pointer_;}
+    delete[] pointer_;}
   
   // Operator=
   string string::operator=(string to_assign){}
@@ -46,6 +50,7 @@
     return size_;}
   size_t string::max_size() const noexcept{
     return MAX_SIZE;}
+
   void string::resize(size_t n, char c){
     if(n>size_){ // adding as many char c as necessary to obtain string of size n
       char* ptr = new char[n+1];
@@ -73,8 +78,10 @@
       reserve(n+1);
     }
   }
+
   size_t string::capacity() const noexcept{
-    return reserved_space_;}
+    return reserved_space_;
+  }
   void string::reserve(size_t n){
     //we must reserve at least enough space to contain our string
     if(n<size_+1){
@@ -86,8 +93,14 @@
     }
     delete pointer_;
     pointer_=future_pointer;
+    reserved_space_=n;
   }
-  void string::clear() noexcept{}
+  void string::clear() noexcept{
+		//delete pointer_;
+		//size_ = 0;
+		
+	}
+
   bool string::empty() const noexcept{
     return (size_==0);}
   
