@@ -8,12 +8,24 @@
 //----------------------------------------------------------------------
 
   // Constructors
-  string::string(char* cstr) {} // From c-string constructor
+  string::string(char* cstr) {
+    // finding size of cstr
+    int s=0;
+    while(cstr[s] != '\0'){
+      ++s;
+    }
+    pointer_ = new char[s];
+    for(int i=0; i<s; ++i){
+      pointer_[i]=cstr[i];
+    }
+    size_=s-1; // same size than cstr without null character '\0'
+    reserved_space_=s;
+  } // From c-string constructor
   string::string(const string& model){} // Copy constructor
 
   // Destructor
   string::~string(){
-    delete pointer;}
+    delete pointer_;}
   
   // Operator=
   string string::operator=(string to_assign){}
