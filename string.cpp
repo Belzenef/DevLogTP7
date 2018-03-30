@@ -21,17 +21,22 @@
     size_=s-1; // same size than cstr without null character '\0'
     reserved_space_=s;
   } // From c-string constructor
+
   string::string(const string& model){ // Copy constructor
-		char* pointer_ = new char;
-		*pointer_ = *model.pointer_;
-  	size_t size_ = model.size_;
-  	size_t reserved_space_ = model.reserved_space_;
+		size_ = model.size_;
+  	reserved_space_ = model.reserved_space_;
+		char* ptr = new char[reserved_space_];
+		for (int i=0; i<size_ + 1; ++i ){
+			ptr[i]=model.pointer_[i];
+		}
+		pointer_ =ptr;
+  	
 	} 
 
 
   // Destructor
   string::~string(){
-    delete pointer_;}
+    delete[] pointer_;}
   
   // Operator=
   string string::operator=(string to_assign){}
@@ -60,7 +65,12 @@
     delete pointer_;
     pointer_=future_pointer;
   }
-  void string::clear() noexcept{}
+  void string::clear() noexcept{
+		//delete pointer_;
+		//size_ = 0;
+		
+	}
+
   bool string::empty() const noexcept{
     return (size_==0);}
   
