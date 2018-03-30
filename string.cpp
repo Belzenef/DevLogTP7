@@ -26,7 +26,10 @@
   string string::operator=(char to_assign){}
   
   // Capacity
-  size_t string::size() const noexcept{}
+  size_t string::size() const noexcept{
+		return size_;
+	}
+
   size_t string::length() const noexcept{}
   size_t string::max_size() const noexcept{}
   void string::resize(size_t n, char c){}
