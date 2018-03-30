@@ -55,6 +55,16 @@
 // Non-member functions
 //----------------------------------------------------------------------
   // operator+
-  string operator+(string str, string to_add){}
+  string operator+(string str, string to_add){
+    string result(str);
+    size_t total_size = str.size_ + to_add.size_; //size of the concatenation of the two strings 
+    result.reserve(total_size+1);
+    result.size_=total_size;
+    for (int i=0;i<to_add.size_+1;++i){
+      result.pointer_[str.size_+i]=to_add.pointer_[i];
+    }
+    return(result);
+  }
+
   string operator+(string str, char* to_add){}
   string operator+(string str, char to_add){}
