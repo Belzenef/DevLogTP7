@@ -46,7 +46,33 @@
     return size_;}
   size_t string::max_size() const noexcept{
     return MAX_SIZE;}
-  void string::resize(size_t n, char c){}
+  void string::resize(size_t n, char c){
+    if(n>size_){ // adding as many char c as necessary to obtain string of size n
+      char* ptr = new char[n+1];
+      for(int i=0; i<size_; ++i){
+        ptr[i]=pointer_[i];
+      }
+      for(int j=size_; j<n; ++j){
+        ptr[j]=c;
+      }
+      ptr[n]='\0';
+      delete[] pointer_;
+      pointer_ = ptr;
+      size_=n;
+      reserve(n+1);
+    }
+    if(n<size_){ // cutting string to size n
+      char* ptr = new char[n+1];
+      for(int i=0; i<n; ++i){
+        ptr[i]=pointer_[i];
+      }
+      ptr[n]='\0';
+      delete[] pointer_;
+      pointer_ = ptr;
+      size_=n;
+      reserve(n+1);
+    }
+  }
   size_t string::capacity() const noexcept{
     return reserved_space_;}
   void string::reserve(size_t n){
