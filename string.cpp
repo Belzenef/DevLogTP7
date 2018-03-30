@@ -30,7 +30,7 @@
 
   // Destructor
   string::~string(){
-    delete pointer_;}
+    delete[] pointer_;}
   
   // Operator=
   string string::operator=(string to_assign){}
@@ -59,7 +59,7 @@
     for(int i=0;i<size_+1;++i){ //copy of the string in the allocated space
       future_pointer[i]=pointer_[i];
     }
-    delete pointer_;
+    delete[] pointer_;
     pointer_=future_pointer;
     reserved_space_=n;
   }
