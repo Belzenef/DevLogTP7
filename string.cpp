@@ -8,26 +8,26 @@
 //----------------------------------------------------------------------
 
   // Constructors
-  string::string(char* cstr) {
+  string::string(char* cstr) {  // From c-string constructor
     // finding size of cstr
     int s=0;
     while(cstr[s] != '\0'){
       ++s;
     }
+    ++s;
     pointer_ = new char[s];
     for(int i=0; i<s; ++i){
       pointer_[i]=cstr[i];
     }
     size_=s-1; // same size than cstr without null character '\0'
     reserved_space_=s;
-  } // From c-string constructor
+  }
   string::string(const string& model){ // Copy constructor
 		char* pointer_ = new char;
 		*pointer_ = *model.pointer_;
   	size_t size_ = model.size_;
   	size_t reserved_space_ = model.reserved_space_;
 	} 
-
 
   // Destructor
   string::~string(){

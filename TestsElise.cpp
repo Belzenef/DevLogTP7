@@ -8,5 +8,7 @@ int main(int argc, char* argv[]){
 	
 	std::cout << "Testing from c-string constructor :" << std::endl;
 	string str = string(cstr);
+	std::cout << str.c_str() << std::endl;
+	std::cout << "str.size() = " << str.size() << std::endl;
 	return 0;
 }
