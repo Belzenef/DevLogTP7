@@ -13,7 +13,7 @@
 
   // Destructor
   string::~string(){
-    delete pointer;}
+    delete pointer_;}
   
   // Operator=
   string string::operator=(string to_assign){}
