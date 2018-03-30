@@ -16,7 +16,8 @@
 	} 
 
   // Destructor
-  string::~string(){}
+  string::~string(){
+    delete pointer_;}
   
   // Operator=
   string string::operator=(string to_assign){}
@@ -28,10 +29,12 @@
   size_t string::length() const noexcept{}
   size_t string::max_size() const noexcept{}
   void string::resize(size_t n, char c){}
-  size_t string::capacity() const noexcept{}
+  size_t string::capacity() const noexcept{
+    return reserved_space_;}
   void string::reserve(size_t n){}
   void string::clear() noexcept{}
-  bool string::empty() const noexcept{}
+  bool string::empty() const noexcept{
+    return (size_==0);}
   
   // String Operations
 	const char* string::c_str() const noexcept {
