@@ -1,5 +1,4 @@
 #include "string.h"
-  
 // Member constants
 //----------------------------------------------------------------------
 	const size_t string::MAX_SIZE;
@@ -46,8 +45,10 @@
   size_t string::length() const noexcept{}
   size_t string::max_size() const noexcept{}
   void string::resize(size_t n, char c){}
+
   size_t string::capacity() const noexcept{
-    return reserved_space_;}
+    return reserved_space_;
+  }
   void string::reserve(size_t n){
     //we must reserve at least enough space to contain our string
     if(n<size_+1){
@@ -59,6 +60,7 @@
     }
     delete pointer_;
     pointer_=future_pointer;
+    reserved_space_=n;
   }
   void string::clear() noexcept{}
   bool string::empty() const noexcept{
