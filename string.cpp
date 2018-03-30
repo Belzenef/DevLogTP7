@@ -9,7 +9,11 @@
 
   // Constructors
   string::string(char* cstr) {} // From c-string constructor
-  string::string(const string& model){} // Copy constructor
+  string::string(const string& model){ // Copy constructor
+		char* pointer_ = model.pointer_;
+  	size_t size_ = model.size_;
+  	size_t reserved_space_ = model.reserved_space_;
+	} 
 
   // Destructor
   string::~string(){}
@@ -30,7 +34,9 @@
   bool string::empty() const noexcept{}
   
   // String Operations
-  const char* string::c_str() const noexcept{}
+	const char* string::c_str() const noexcept {
+		return pointer_;
+	}
 
 // Non-member functions
 //----------------------------------------------------------------------
