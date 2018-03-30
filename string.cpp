@@ -1,5 +1,4 @@
 #include "string.h"
-  
 // Member constants
 //----------------------------------------------------------------------
 	const size_t string::MAX_SIZE;
@@ -8,19 +7,20 @@
 //----------------------------------------------------------------------
 
   // Constructors
-  string::string(char* cstr) {
+  string::string(char* cstr) {  // From c-string constructor
     // finding size of cstr
     int s=0;
     while(cstr[s] != '\0'){
       ++s;
     }
+    ++s;
     pointer_ = new char[s];
     for(int i=0; i<s; ++i){
       pointer_[i]=cstr[i];
     }
     size_=s-1; // same size than cstr without null character '\0'
     reserved_space_=s;
-  } // From c-string constructor
+  }
 
   string::string(const string& model){ // Copy constructor
 		size_ = model.size_;
@@ -32,7 +32,6 @@
 		pointer_ =ptr;
   	
 	} 
-
 
   // Destructor
   string::~string(){
@@ -47,12 +46,15 @@
   size_t string::size() const noexcept{
 		return size_;
 	}
-
-  size_t string::length() const noexcept{}
-  size_t string::max_size() const noexcept{}
+  size_t string::length() const noexcept{
+    return size_;}
+  size_t string::max_size() const noexcept{
+    return MAX_SIZE;}
   void string::resize(size_t n, char c){}
+
   size_t string::capacity() const noexcept{
-    return reserved_space_;}
+    return reserved_space_;
+  }
   void string::reserve(size_t n){
     //we must reserve at least enough space to contain our string
     if(n<size_+1){
@@ -64,6 +66,7 @@
     }
     delete pointer_;
     pointer_=future_pointer;
+    reserved_space_=n;
   }
   void string::clear() noexcept{
 		//delete pointer_;

@@ -8,5 +8,14 @@ int main(int argc, char* argv[]){
 	
 	std::cout << "Testing from c-string constructor :" << std::endl;
 	string str = string(cstr);
+	std::cout << str.c_str() << std::endl;
+	std::cout << "str.size() = " << str.size() << std::endl;
+	
+	std::cout << "Testing length() :" << std::endl;
+	std::cout << "str.length() = " << str.length() <<std::endl;
+	
+	std::cout << "Testing max_size() :" << std::endl;
+	std::cout << "str.max_size() = " << str.max_size() <<std::endl;
+	
 	return 0;
 }
