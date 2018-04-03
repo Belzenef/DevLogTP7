@@ -36,8 +36,8 @@ int main(int argc, char* argv[]){
   std::cout << "Testing maximum size exception in reserve:" << std::endl;
   str2.reserve(100);
   std::cout << "str2.capacity() = " << str2.capacity() << std::endl;
-  str2.reserve(101);
-  std::cout << "str2.capacity() = " << str2.capacity() << std::endl;
+  /*str2.reserve(101);
+  std::cout << "str2.capacity() = " << str2.capacity() << std::endl;*/
   str2 = cstr;
   std::cout << str2.c_str() << std::endl;
 	std::cout << "str2.size() = " << str2.size() << std::endl;
@@ -51,11 +51,13 @@ int main(int argc, char* argv[]){
 
 
 
-  /*std::cout << "Testing maximum size :" << std::endl;
+  std::cout << "Testing maximum size :" << std::endl;
   char too_long[200];
   for(int k=0; k<199;++k){
     too_long[k]='R';
   }
-  too_long[199]='\0';*/
+  too_long[199]='\0';
+  string str4(too_long);
+
 	return 0;
 }

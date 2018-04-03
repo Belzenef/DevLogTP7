@@ -113,17 +113,21 @@
     if(n>MAX_SIZE){
       throw std::length_error("requested space is to reserve greater than the maximum possible size");
     }else{
-    //we must reserve at least enough space to contain our string
-      if(n<size_+1){
-        n=size_+1;      
+      try{
+      //we must reserve at least enough space to contain our string
+        if(n<size_+1){
+          n=size_+1;      
+        }
+        char* future_pointer= new char[n]; //allocation of the desired space
+        for(int i=0;i<size_+1;++i){ //copy of the string in the allocated space
+          future_pointer[i]=pointer_[i];
+        }
+        delete[] pointer_;
+        pointer_=future_pointer;
+        reserved_space_=n;
+      }catch(std::bad_alloc& ba){
+        throw std::bad_alloc();
       }
-      char* future_pointer= new char[n]; //allocation of the desired space
-      for(int i=0;i<size_+1;++i){ //copy of the string in the allocated space
-        future_pointer[i]=pointer_[i];
-      }
-      delete[] pointer_;
-      pointer_=future_pointer;
-      reserved_space_=n;
     }
   }
   void string::clear() noexcept{
