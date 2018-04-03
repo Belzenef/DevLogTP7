@@ -57,7 +57,16 @@
     reserved_space_=size;
     return (*this);
   }
-  string string::operator=(char to_assign){}
+  string string::operator=(char to_assign){
+	  delete[] pointer_;
+    char* ptr = new char[2];
+    ptr[0]=to_assign;
+    ptr[1]='\0';
+    pointer_=ptr;
+    size_=1;
+    reserve(2);
+    return(*this);
+  }
   
   // Capacity
   size_t string::size() const noexcept{
@@ -141,4 +150,5 @@
   }
 
   string operator+(string str, char* to_add){}
+  
   string operator+(string str, char to_add){}
