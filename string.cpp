@@ -40,20 +40,22 @@
   
   // Operator=
   string string::operator=(string to_assign){}
-  string string::operator=(char* to_assign){
-    // finding size of cstr
-    int s=0;
-    while(to_assign[s] != '\0'){
-      ++s;
+  string& string::operator= (const char* s){
+  // finding size of s
+    int size=0;
+    while(s[size] != '\0'){
+      ++size;
     }
-    ++s;
+    ++size;
+  //assign the c-str s to the current object
     delete[] pointer_;
-    pointer_ = new char[s];
-    for(int i=0; i<s; ++i){
-      pointer_[i]=to_assign[i];
+    pointer_ = new char[size];
+    for(int i=0; i<size; ++i){
+      pointer_[i]=s[i];
     }
-    size_=s-1; // same size than cstr without null character '\0'
-    reserve(s);
+    size_=size-1; // same size than s without null character '\0'
+    reserved_space_=size;
+    return (*this);
   }
   string string::operator=(char to_assign){
 	  delete[] pointer_;
@@ -136,16 +138,16 @@
 // Non-member functions
 //----------------------------------------------------------------------
   // operator+
-  /*string operator+(string str, string to_add){
-    string result(str);
+  string operator+(string str, string to_add){
+    string* result= new string(str);
     size_t total_size = str.size_ + to_add.size_; //size of the concatenation of the two strings 
-    result.reserve(total_size+1);
-    result.size_=total_size;
+    (*result).reserve(total_size+1);
+    (*result).size_=total_size;
     for (int i=0;i<to_add.size_+1;++i){
-      result.pointer_[str.size_+i]=to_add.pointer_[i];
+      (*result).pointer_[str.size_+i]=to_add.pointer_[i];
     }
-    return(result);
-  }*/
+    return(*result);
+  }
 
   string operator+(string str, char* to_add){    
     string result(str);
