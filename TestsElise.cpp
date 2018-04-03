@@ -17,5 +17,15 @@ int main(int argc, char* argv[]){
 	std::cout << "Testing max_size() :" << std::endl;
 	std::cout << "str.max_size() = " << str.max_size() <<std::endl;
 	
+	std::cout << "Testing resize() :" << std::endl;
+	std::cout << "str.resize(5) : ";
+	str.resize(5);
+	std::cout << str.c_str() << std::endl;
+	std::cout << "str.size() = " << str.size() << std::endl;
+	std::cout << "str.resize(8,'o') : ";
+	str.resize(8,'o');
+	std::cout << str.c_str() << std::endl;
+	std::cout << "str.size() = " << str.size() << std::endl;
+	
 	return 0;
 }
