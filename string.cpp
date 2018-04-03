@@ -63,6 +63,7 @@
     pointer_=ptr;
     size_=1;
     reserve(2);
+    return(*this);
   }
   
   // Capacity
@@ -147,4 +148,5 @@
   }*/
 
   string operator+(string str, char* to_add){}
+  
   string operator+(string str, char to_add){}
