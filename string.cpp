@@ -14,13 +14,23 @@
       ++s;
     }
     ++s;
-    pointer_ = new char[s];
+    
+    try{ reserve(s);}
+    catch (const std::length_error& le){
+     throw std::length_error(le.what() << std::endl);
+    }catch (const std::bad_alloc& ba){
+     throw std::bad_alloc(ba.what() << std::endl);
+    }
+     
+    try{ pointer_ = new char[s];}
+    catch (const std::bad_alloc& ba){
+     throw std::bad_alloc(ba.what() << std::endl);
+    }
+    
     for(int i=0; i<s; ++i){
       pointer_[i]=cstr[i];
     }
     size_=s-1; // same size than cstr without null character '\0'
-    reserved_space_=s;
-
   }
 
   string::string(const string& model){ // Copy constructor
@@ -31,7 +41,6 @@
 			ptr[i]=model.pointer_[i];
 		}
 		pointer_ =ptr;
-  	
 	} 
 
   // Destructor
