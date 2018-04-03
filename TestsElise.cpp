@@ -50,5 +50,6 @@ int main(int argc, char* argv[]){
   //string str4(long_cstr);
   //string str5(long_cstr + str1);
   //str.resize(200);
+  std::cout << "Uncomment previous lines one by one to test exceptions.\nTests previously done went well" << std::endl;
 	return 0;
 }

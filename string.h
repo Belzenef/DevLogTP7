@@ -32,16 +32,16 @@ class string{
 //----------------------------------------------------------------------
   public :
   // Constructors
-  string(const char* cstr); // From c-string constructor
+  string(const char* s); // From c-string constructor
   string(const string& model); // Copy constructor
 
   // Destructor
   ~string(); //This deallocates all the storage capacity allocated by the string
   
   // Operator=
-  string operator=(string to_assign);
+  string operator=(string str);
   string& operator= (const char* s); //Assigns a new value to the string, replacing its current contents.
-  string& operator=(char to_assign);
+  string& operator=(char c);
   
   // Capacity
   size_t size() const noexcept;// returns the size_ of the string
