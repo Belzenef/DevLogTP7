@@ -40,6 +40,13 @@ int main(int argc, char* argv[]){
 	string str3(cstr2 + str1);
 	std::cout << "string str3(cstr2 + str1) : " << str3.c_str()<<std::endl;
 	std::cout << "str3.size() = " << str3.size() << std::endl;
-
+	
+	std::cout << "Testing exceptions :" << std::endl;
+	char long_cstr[106];
+	for(int i=0; i<105; ++i){
+		long_cstr[i]='e';
+	}
+  long_cstr[105] = '\0';
+  string str4(long_cstr);
 	return 0;
 }
