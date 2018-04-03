@@ -37,6 +37,9 @@ int main(int argc, char* argv[]){
 	string str2(str1 + cstr2);
 	std::cout << "string str2(str1 + cstr2) : " << str2.c_str()<<std::endl;
 	std::cout << "str2.size() = " << str2.size() << std::endl;
+	string str3(cstr2 + str1);
+	std::cout << "string str3(cstr2 + str1) : " << str3.c_str()<<std::endl;
+	std::cout << "str3.size() = " << str3.size() << std::endl;
 
 	return 0;
 }

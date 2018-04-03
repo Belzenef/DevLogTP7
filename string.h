@@ -9,7 +9,8 @@ class string{
 //----------------------------------------------------------------------
   // operator+
   friend string operator+(string str, string to_add);
-  friend string operator+(string str, char* to_add);
+	friend string operator+(const string& lhs, const char* rhs);
+	friend string operator+(const char* lhs, const string& rhs);
   friend string operator+(string str, char to_add);
   
 // Member types
@@ -27,7 +28,7 @@ class string{
 //----------------------------------------------------------------------
   public :
   // Constructors
-  string(char* cstr); // From c-string constructor
+  string(const char* cstr); // From c-string constructor
   string(const string& model); // Copy constructor
 
   // Destructor
@@ -36,7 +37,7 @@ class string{
   // Operator=
   string operator=(string to_assign);
   string& operator= (const char* s);
-  string operator=(char to_assign);
+  string& operator=(char to_assign);
   
   // Capacity
   size_t size() const noexcept;// returns the size_ of the string
@@ -57,7 +58,8 @@ class string{
 //----------------------------------------------------------------------
 // operator+
 string operator+(string str, string to_add);
-string operator+(string str, char* to_add);
+string operator+(const string& lhs, const char* rhs);
+string operator+(const char* lhs, const string& rhs);
 string operator+(string str, char to_add);
 
 #endif
