@@ -67,7 +67,7 @@ int main(int argc, char* argv[]){
   almost_too_long[99]='\0';
   string str4(almost_too_long);
   std::cout << "str4: " << str4.c_str() << std::endl;
-  std::cout << "str2+almost_too_long = " << (str2+str4).c_str() << std::endl;
+  //std::cout << "str2+almost_too_long = " << (str2+str4).c_str() << std::endl;
 
 
 	return 0;
