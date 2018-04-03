@@ -37,9 +37,10 @@ int main(int argc, char* argv[]){
   std::cout << str2.c_str() << std::endl;
 	std::cout << "str2.size() = " << str2.size() << std::endl;
   std::cout << "str2.capacity() = " << str2.capacity() << std::endl;
-  std::cout << "Testing operator+ :" << std::endl;/*
-  std::cout << operator+(str,str2).c_str() << std::endl;
-	std::cout << "(str+str2).size() = " << (str+str2).size() << std::endl;
-  std::cout << "(str+str2).capacity() = " << (str+str2).capacity() << std::endl;*/
+  std::cout << "Testing operator+ :" << std::endl;
+  string str3=(str+str2);
+  std::cout << str3.c_str() << std::endl;
+	std::cout << "(str+str2).size() = " << str3.size() << std::endl;
+  std::cout << "(str+str2).capacity() = " << str3.capacity() << std::endl;
 	return 0;
 }
