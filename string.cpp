@@ -55,7 +55,15 @@
     size_=s-1; // same size than cstr without null character '\0'
     reserve(s);
   }
-  string string::operator=(char to_assign){}
+  string string::operator=(char to_assign){
+	  delete[] pointer_;
+    char* ptr = new char[2];
+    ptr[0]=to_assign;
+    ptr[1]='\0';
+    pointer_=ptr;
+    size_=1;
+    reserve(2);
+  }
   
   // Capacity
   size_t string::size() const noexcept{

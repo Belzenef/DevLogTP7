@@ -27,5 +27,10 @@ int main(int argc, char* argv[]){
 	std::cout << str.c_str() << std::endl;
 	std::cout << "str.size() = " << str.size() << std::endl;
 	
+	std::cout << "Testing operators :" << std::endl;
+	str = 'e';
+	std::cout << "str = 'e' : " << str.c_str()<<std::endl;
+	std::cout << "str.size() = " << str.size() << std::endl;
+
 	return 0;
 }
