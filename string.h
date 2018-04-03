@@ -2,6 +2,7 @@
 #define STRING_H
 
 #include <cstdio>
+#include <stdexcept>
 
 class string{
   
