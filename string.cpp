@@ -51,19 +51,25 @@
   string string::operator=(string to_assign){}
   string& string::operator= (const char* s){
   // finding size of s
-    int size=0;
-    while(s[size] != '\0'){
+    try{
+      int size=0;
+      while(s[size] != '\0'){
+        ++size;
+      }
       ++size;
+    //assign the c-str s to the current object
+      delete[] pointer_;
+      pointer_ = new char[size];
+      for(int i=0; i<size; ++i){
+        pointer_[i]=s[i];
+      }
+      size_=size-1; // same size than s without null character '\0'
+      reserve(size);
+    }catch (const std::length_error& le) {
+      throw std::length_error(le.what());
+    }catch (std::bad_alloc& ba) {
+      throw std::bad_alloc();
     }
-    ++size;
-  //assign the c-str s to the current object
-    delete[] pointer_;
-    pointer_ = new char[size];
-    for(int i=0; i<size; ++i){
-      pointer_[i]=s[i];
-    }
-    size_=size-1; // same size than s without null character '\0'
-    reserved_space_=size;
     return (*this);
   }
   string& string::operator=(char to_assign){
@@ -119,7 +125,7 @@
   }
   void string::reserve(size_t n){
     if(n>MAX_SIZE){
-      throw std::length_error("requested space is to reserve greater than the maximum possible size");
+      throw std::length_error("requested space to reserve is greater than the maximum possible size");
     }else{
       try{
       //we must reserve at least enough space to contain our string
