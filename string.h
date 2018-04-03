@@ -9,6 +9,7 @@ class string{
 //----------------------------------------------------------------------
   // operator+
   friend string operator+ (const string& lhs, const string& rhs);
+  friend string operator+ (string&& lhs, string&& rhs);
   friend string operator+(string str, char* to_add);
   friend string operator+(string str, char to_add);
   

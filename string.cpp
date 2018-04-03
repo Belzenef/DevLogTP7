@@ -36,7 +36,8 @@
 
   // Destructor
   string::~string(){
-    delete[] pointer_;}
+    delete[] pointer_;
+  }
   
   // Operator=
   string string::operator=(string to_assign){}
@@ -148,7 +149,6 @@
     }
     return result;
   }
-
   string operator+(string str, char* to_add){}
   
   string operator+(string str, char to_add){}
