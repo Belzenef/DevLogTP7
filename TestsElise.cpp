@@ -7,7 +7,7 @@ int main(int argc, char* argv[]){
 	std::cout << cstr << std::endl;
 	
 	std::cout << "Testing from c-string constructor :" << std::endl;
-	string str = string(cstr);
+	string str(cstr);
 	std::cout << str.c_str() << std::endl;
 	std::cout << "str.size() = " << str.size() << std::endl;
 	
@@ -31,6 +31,15 @@ int main(int argc, char* argv[]){
 	str = 'H';
 	std::cout << "str = 'H' : " << str.c_str()<<std::endl;
 	std::cout << "str.size() = " << str.size() << std::endl;
+	char cstr1[] = {'H','e','l','l','o',' ','\0'};
+	string str1(cstr1);
+	char cstr2[] = {'W','o','r','l','d',' ','!','\0'};
+	string str2(str1 + cstr2);
+	std::cout << "string str2(str1 + cstr2) : " << str2.c_str()<<std::endl;
+	std::cout << "str2.size() = " << str2.size() << std::endl;
+	string str3(cstr2 + str1);
+	std::cout << "string str3(cstr2 + str1) : " << str3.c_str()<<std::endl;
+	std::cout << "str3.size() = " << str3.size() << std::endl;
 
 	return 0;
 }

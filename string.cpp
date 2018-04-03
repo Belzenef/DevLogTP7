@@ -7,7 +7,7 @@
 //----------------------------------------------------------------------
 
   // Constructors
-  string::string(char* cstr) {  // From c-string constructor
+  string::string(const char* cstr) {  // From c-string constructor
     // finding size of cstr
     int s=0;
     while(cstr[s] != '\0'){
@@ -58,7 +58,7 @@
     reserved_space_=size;
     return (*this);
   }
-  string string::operator=(char to_assign){
+  string& string::operator=(char to_assign){
 	  delete[] pointer_;
     char* ptr = new char[2];
     ptr[0]=to_assign;
@@ -149,6 +149,39 @@
     }
     return result;
   }
-  string operator+(string str, char* to_add){}
+
+  string operator+(const string& lhs, const char* rhs){    
+    string result(lhs);
+    // finding size of rhs
+    int s=0;
+    while(rhs[s] != '\0'){
+      ++s;
+    }
+    ++s;
+    size_t total_size = lhs.size_ + s -1;
+    result.reserve(total_size+1);
+    for(int i=0; i<s; ++i){
+      result.pointer_[i+lhs.size_]=rhs[i];
+    }
+    result.size_=total_size;
+    return(result);
+  }
+  
+  string operator+(const char* lhs, const string& rhs){    
+    string result(lhs);
+    // finding size of lhs
+    int s=0;
+    while(lhs[s] != '\0'){
+      ++s;
+    }
+    ++s;
+    size_t total_size = rhs.size_ + s -1;
+    result.reserve(total_size+1);
+    for(int i=0; i<s; ++i){
+      result.pointer_[i+s-1]=rhs.pointer_[i];
+    }
+    result.size_=total_size;
+    return(result);
+  }
   
   string operator+(string str, char to_add){}
