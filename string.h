@@ -8,7 +8,6 @@ class string{
 // Non-member functions
 //----------------------------------------------------------------------
   // operator+
-<<<<<<< HEAD
   friend string operator+(string str, string to_add);
 	friend string operator+(const string& lhs, const char* rhs);
 	friend string operator+(const char* lhs, const string& rhs);
@@ -58,7 +57,6 @@ class string{
 // Non-member functions
 //----------------------------------------------------------------------
 // operator+
-<<<<<<< HEAD
 string operator+(string str, string to_add);
 string operator+(const string& lhs, const char* rhs);
 string operator+(const char* lhs, const string& rhs);
