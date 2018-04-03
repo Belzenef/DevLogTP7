@@ -8,15 +8,10 @@ class string{
 // Non-member functions
 //----------------------------------------------------------------------
   // operator+
-<<<<<<< HEAD
+
   friend string operator+ (const string& lhs, const string& rhs);
-  friend string operator+ (string&& lhs, string&& rhs);
-  friend string operator+(string str, char* to_add);
-=======
-  friend string operator+(string str, string to_add);
 	friend string operator+(const string& lhs, const char* rhs);
 	friend string operator+(const char* lhs, const string& rhs);
->>>>>>> a6295a41da9c98043b3558a30c9a96dbd1ef8460
   friend string operator+(string str, char to_add);
   
 // Member types
