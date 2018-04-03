@@ -57,7 +57,8 @@ int main(int argc, char* argv[]){
     too_long[k]='R';
   }
   too_long[199]='\0';
-  string str4(too_long);
+  str2=too_long;
+  std::cout << "str2.capacity() = " << str2.capacity() << std::endl;
 
 	return 0;
 }
