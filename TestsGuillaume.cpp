@@ -57,8 +57,18 @@ int main(int argc, char* argv[]){
     too_long[k]='R';
   }
   too_long[199]='\0';
-  str2=too_long;
-  std::cout << "str2.capacity() = " << str2.capacity() << std::endl;
+  /*str2=too_long;
+  std::cout << "str2.capacity() = " << str2.capacity() << std::endl;*/
+
+  char almost_too_long[100];
+  for(int k=0; k<99;++k){
+    almost_too_long[k]='R';
+  }
+  almost_too_long[99]='\0';
+  string str4(almost_too_long);
+  std::cout << "str4: " << str4.c_str() << std::endl;
+  std::cout << "str2+almost_too_long = " << (str2+str4).c_str() << std::endl;
+
 
 	return 0;
 }

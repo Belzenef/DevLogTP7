@@ -179,14 +179,20 @@
 //----------------------------------------------------------------------
   // operator+
   string operator+ (const string& lhs, const string& rhs){
-    string result=string(lhs);
-    size_t total_size = lhs.size_ + rhs.size_; //size of the concatenation of the two strings 
-    result.reserve(total_size+1);
-    result.size_=total_size;
-    for (int i=0;i<rhs.size_+1;++i){
-      result.pointer_[lhs.size_+i]=rhs.pointer_[i];
+    try{
+      string result=string(lhs);
+      size_t total_size = lhs.size_ + rhs.size_; //size of the concatenation of the two strings 
+      result.reserve(total_size+1);
+      result.size_=total_size;
+      for (int i=0;i<rhs.size_+1;++i){
+        result.pointer_[lhs.size_+i]=rhs.pointer_[i];
+      }
+      return result;
+    }catch (const std::length_error& le) {
+      throw std::length_error(le.what());
+    }catch (std::bad_alloc& ba) {
+      throw std::bad_alloc();
     }
-    return result;
   }
 
   string operator+(const string& lhs, const char* rhs){    
