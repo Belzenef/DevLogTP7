@@ -147,6 +147,21 @@
     return(result);
   }*/
 
-  string operator+(string str, char* to_add){}
+  string operator+(string str, char* to_add){    
+    string result(str);
+    // finding size of to_add
+    int s=0;
+    while(to_add[s] != '\0'){
+      ++s;
+    }
+    ++s;
+    size_t total_size = str.size_ + s -1;
+    result.reserve(total_size+1);
+    for(int i=0; i<s; ++i){
+      result.pointer_[i+str.size_]=to_add[i];
+    }
+    result.size_=total_size;
+    return(result);
+  }
   
   string operator+(string str, char to_add){}
