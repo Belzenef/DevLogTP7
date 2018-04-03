@@ -47,6 +47,8 @@ int main(int argc, char* argv[]){
 		long_cstr[i]='e';
 	}
   long_cstr[105] = '\0';
-  string str4(long_cstr);
+  //string str4(long_cstr);
+  //string str5(long_cstr + str1);
+  //str.resize(200);
 	return 0;
 }
