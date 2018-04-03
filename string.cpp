@@ -20,13 +20,13 @@
     }
     size_=s-1; // same size than cstr without null character '\0'
     reserved_space_=s;
-  }
+  }/*
   string::string(const string& model){ // Copy constructor
 		char* pointer_ = new char;
 		*pointer_ = *model.pointer_;
   	size_t size_ = model.size_;
   	size_t reserved_space_ = model.reserved_space_;
-	} 
+	} */
 
   // Destructor
   string::~string(){
@@ -34,7 +34,21 @@
   
   // Operator=
   string string::operator=(string to_assign){}
-  string string::operator=(char* to_assign){}
+  string string::operator=(char* to_assign){
+    // finding size of cstr
+    int s=0;
+    while(to_assign[s] != '\0'){
+      ++s;
+    }
+    ++s;
+    delete[] pointer_;
+    pointer_ = new char[s];
+    for(int i=0; i<s; ++i){
+      pointer_[i]=to_assign[i];
+    }
+    size_=s-1; // same size than cstr without null character '\0'
+    reserve(s);
+  }
   string string::operator=(char to_assign){}
   
   // Capacity
@@ -75,7 +89,7 @@
 // Non-member functions
 //----------------------------------------------------------------------
   // operator+
-  string operator+(string str, string to_add){
+  /*string operator+(string str, string to_add){
     string result(str);
     size_t total_size = str.size_ + to_add.size_; //size of the concatenation of the two strings 
     result.reserve(total_size+1);
@@ -84,7 +98,7 @@
       result.pointer_[str.size_+i]=to_add.pointer_[i];
     }
     return(result);
-  }
+  }*/
 
   string operator+(string str, char* to_add){}
   string operator+(string str, char to_add){}
