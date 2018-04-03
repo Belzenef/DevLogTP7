@@ -33,14 +33,31 @@ int main(int argc, char* argv[]){
   std::cout << "str.empty() = " << str.empty() << std::endl;
   std::cout << str.c_str() << std::endl;
 
+  std::cout << "Testing maximum size exception in reserve:" << std::endl;
+  str2.reserve(100);
+  std::cout << "str2.capacity() = " << str2.capacity() << std::endl;
+  /*str2.reserve(101);
+  std::cout << "str2.capacity() = " << str2.capacity() << std::endl;*/
   str2 = cstr;
   std::cout << str2.c_str() << std::endl;
 	std::cout << "str2.size() = " << str2.size() << std::endl;
   std::cout << "str2.capacity() = " << str2.capacity() << std::endl;
+
   std::cout << "Testing operator+ :" << std::endl;
   string str3=(str+str2);
   std::cout << str3.c_str() << std::endl;
 	std::cout << "(str+str2).size() = " << str3.size() << std::endl;
   std::cout << "(str+str2).capacity() = " << str3.capacity() << std::endl;
+
+
+
+  std::cout << "Testing maximum size :" << std::endl;
+  char too_long[200];
+  for(int k=0; k<199;++k){
+    too_long[k]='R';
+  }
+  too_long[199]='\0';
+  string str4(too_long);
+
 	return 0;
 }
