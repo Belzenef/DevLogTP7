@@ -14,23 +14,22 @@
       ++s;
     }
     ++s;
+    if(s>MAX_SIZE){
+      throw std::length_error("size of c-string is greater than MAX_SIZE\n");
+    }
     
-    try{ reserve(s);}
-    catch (const std::length_error& le){
-     throw std::length_error(le.what() << std::endl);
+    try{ 
+      pointer_ = new char[s];
+      for(int i=0; i<s; ++i){
+        pointer_[i]=cstr[i];
+      }
+      size_=s-1; // same size than cstr without null character '\0'
+      reserve(s);
+    }catch (const std::length_error& le){
+      throw std::length_error(le.what());
     }catch (const std::bad_alloc& ba){
-     throw std::bad_alloc(ba.what() << std::endl);
+      throw std::bad_alloc();
     }
-     
-    try{ pointer_ = new char[s];}
-    catch (const std::bad_alloc& ba){
-     throw std::bad_alloc(ba.what() << std::endl);
-    }
-    
-    for(int i=0; i<s; ++i){
-      pointer_[i]=cstr[i];
-    }
-    size_=s-1; // same size than cstr without null character '\0'
   }
 
   string::string(const string& model){ // Copy constructor
