@@ -35,7 +35,7 @@ class string{
   
   // Operator=
   string operator=(string to_assign);
-  string operator=(char* to_assign);
+  string& operator= (const char* s);
   string operator=(char to_assign);
   
   // Capacity
