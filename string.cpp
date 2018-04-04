@@ -69,7 +69,7 @@
     reserved_space_=n;
   }
   void string::clear() noexcept{
-		//delete pointer_;
+		//resize 0?
 		//size_ = 0;
 		
 	}
