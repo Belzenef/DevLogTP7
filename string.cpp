@@ -49,14 +49,37 @@
     }
   }
 
-  string::string(const string& model){ // Copy constructor
+  string::string(const string& model){ 
+/*Copy constructor : Construct a copy of model.
+    INPUT:
+      string& model: Reference to a string (model).
+    OUTPUT:
+      none
+    PRECONDITIONS:
+      none
+    POSTCONDITIONS:
+      none
+    EXCEPTION SAFETY:
+      There are no effects in case an exception is thrown (strong guarantee). 
+      If the resulting string length would exceed the max_size, a length_error 
+      exception is thrown.
+      A bad_alloc exception is thrown if the function needs to allocate 
+      storage and fails. */
+		try{
 		size_ = model.size_;
-  	reserved_space_ = model.reserved_space_;
-		char* ptr = new char[reserved_space_];
-		for (int i=0; i<size_ + 1; ++i ){
-			ptr[i]=model.pointer_[i];
-		}
-		pointer_ =ptr;
+  		reserved_space_ = model.reserved_space_;
+			char* ptr = new char[reserved_space_];
+			for (int i=0; i<size_ + 1; ++i ){
+				ptr[i]=model.pointer_[i];
+			}
+			pointer_ =ptr;
+
+		//catch exceptions
+    }catch (const std::length_error& le){
+     	throw std::length_error(le.what());
+    }catch (const std::bad_alloc& ba){
+     	throw std::bad_alloc();
+    	}
 	} 
 
   // Destructor
@@ -66,19 +89,33 @@
   
   // Operator=
   string& string::operator= (const string& str){
+	/*Assigns a new value to the string, replacing its current contents.
+    INPUT:
+      string& str: reference to a string. The content of str is copied as the new value for the string.
+    OUTPUT:
+      *this
+    PRECONDITIONS:
+      none
+    POSTCONDITIONS:
+      The object is modified: the string has been assigned a new value.
+    EXCEPTION SAFETY:
+      There are no effects in case an exception is thrown (strong guarantee). 
+      If the resulting string length would exceed the max_size, a length_error 
+      exception is thrown.
+      A bad_alloc exception is thrown if the function needs to allocate 
+      storage and fails. */
 		try{
+			delete[] pointer_;
 
-			//assign char c to the current object
-			//delete[] pointer_;
-			//string copy(str);
-			/*size_ = str.size_;
+			//copying str into *this:
+			size_ = str.size_;
 			pointer_ = new char[size_ + 1];
-			
 			for(int i=0; i<size_; ++i){
-        pointer_[i]=str[i];
+        pointer_[i]=str.pointer_[i];
       }
-			pointer_[size_ + 1]= '\0';
-			reserve(size_);*/
+			pointer_[size_]= '\0';
+
+			reserve(size_);
 			return(*this);
 
 		//catch exceptions
@@ -170,7 +207,20 @@
   
   // Capacity
   size_t string::size() const noexcept{
+ 	/*Returns the size of the string, in terms of bytes, from the first
+    character to the first null-character encountered (excluded). Synonym to length().
+    INPUT:
+      none
+    OUTPUT:
+      size_t size_ : the value corresponding to the number of bytes in the string.
+    PRECONDITIONS:
+      none
+    POSTCONDITIONS:
+      none
+    EXCEPTION SAFETY:
+      No-throw guarantee: this member function never throws exceptions.*/
 		return size_;}
+
   size_t string::length() const noexcept{
     /*Returns the length of the string, in terms of bytes, from the first
     character to the first null-character encountered (excluded).  
@@ -334,6 +384,17 @@
 
 
   void string::clear() noexcept{
+  /* Erases the contents of the string, which becomes an empty string (with a length of 0 characters).
+    INPUT:
+      none
+    OUTPUT:
+    	none
+    PRECONDITIONS:
+      none
+    POSTCONDITIONS:
+      The object is modified : the string is now empty.
+    EXCEPTION SAFETY:
+      This member function never throws exceptions.*/
 		resize( 0);	
 	}
 
@@ -356,6 +417,17 @@
   
   // String Operations
 	const char* string::c_str() const noexcept {
+  /*Returns a pointer to an array that contains a null-terminated sequence of characters (i.e., a C-string) representing the current value of the string object. This array includes the same sequence of characters that make up the value of the string object plus an additional terminating null-character ('\0') at the end.
+    INPUT:
+      none
+    OUTPUT:
+      A pointer to the c-string representation of the string object's value.
+    PRECONDITIONS:
+      none
+    POSTCONDITIONS:
+      The object is unmodified.
+    EXCEPTION SAFETY:
+      This member function never throws exceptions.*/
 		return pointer_;
 	}
 
@@ -453,6 +525,8 @@
 			result.pointer_[rsize + 1]='\0';
 			result.size_ = rsize+1; //total size 
 			return(result);
+
+		//catch exceptions
  		}catch (const std::length_error& le){
       throw std::length_error(le.what());
     }catch (const std::bad_alloc& ba){
@@ -473,6 +547,8 @@
 			result.pointer_[rsize+1]='\0';
 			result.size_=rsize + 1; //total size
 			return(result);
+
+		// catch exceptions
  		}catch (const std::length_error& le){
       throw std::length_error(le.what());
     }catch (const std::bad_alloc& ba){
