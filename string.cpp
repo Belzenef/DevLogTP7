@@ -65,7 +65,30 @@
   }
   
   // Operator=
-  string string::operator=(string to_assign){}
+  string& string::operator= (const string& str){
+		try{
+
+			//assign char c to the current object
+			//delete[] pointer_;
+			//string copy(str);
+			/*size_ = str.size_;
+			pointer_ = new char[size_ + 1];
+			
+			for(int i=0; i<size_; ++i){
+        pointer_[i]=str[i];
+      }
+			pointer_[size_ + 1]= '\0';
+			reserve(size_);*/
+			return(*this);
+
+		//catch exceptions
+		}catch (const std::length_error& le) {
+      throw std::length_error(le.what());
+    }catch (std::bad_alloc& ba) {
+      throw std::bad_alloc();
+    }
+	}
+
   string& string::operator= (const char* s){
   /*Assigns a new value to the string, replacing its current contents.
     INPUT:
@@ -311,9 +334,7 @@
 
 
   void string::clear() noexcept{
-		//resize 0?
-		//size_ = 0;
-		
+		resize( 0);	
 	}
 
 
@@ -423,4 +444,38 @@
     }
   }
   
-  string operator+(string str, char to_add){}
+	string operator+ (const string& lhs, char rhs){
+		try{
+			string result(lhs);
+			size_t rsize=result.size(); //result's size
+			result.reserve(rsize + 2);
+			result.pointer_[rsize ]=rhs;
+			result.pointer_[rsize + 1]='\0';
+			result.size_ = rsize+1; //total size 
+			return(result);
+ 		}catch (const std::length_error& le){
+      throw std::length_error(le.what());
+    }catch (const std::bad_alloc& ba){
+      throw std::bad_alloc();
+    }
+	}
+
+	string operator+ (char lhs, const string& rhs){
+		try{
+			char clhs[]={lhs,'\0'};
+			string result(clhs);
+			size_t rsize=rhs.size(); //rhs's size
+			result.reserve(rsize + 2);
+			//copying rhs into result :
+			for(int i=0; i<=rsize; ++i){
+				result.pointer_[i+1]=rhs.pointer_[i];
+			}
+			result.pointer_[rsize+1]='\0';
+			result.size_=rsize + 1; //total size
+			return(result);
+ 		}catch (const std::length_error& le){
+      throw std::length_error(le.what());
+    }catch (const std::bad_alloc& ba){
+      throw std::bad_alloc();
+    }
+	}

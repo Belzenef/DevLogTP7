@@ -15,7 +15,8 @@ class string{
   friend string operator+ (const string& lhs, const string& rhs);
 	friend string operator+(const string& lhs, const char* rhs);
 	friend string operator+(const char* lhs, const string& rhs);
-  friend string operator+(string str, char to_add);
+  friend string operator+ (char lhs, const string& rhs);
+	friend string operator+ (const string& lhs, char rhs);
   
 // Member types
 //----------------------------------------------------------------------
@@ -39,7 +40,7 @@ class string{
   ~string(); //This deallocates all the storage capacity allocated by the string
   
   // Operator=
-  string operator=(string str);
+  string& operator= (const string& str);
   string& operator= (const char* s); //Assigns a new value to the string, replacing its current contents.
   string& operator=(char c);
   
@@ -65,6 +66,7 @@ class string{
 //Returns a newly constructed string object with its value being the concatenation of the characters in lhs followed by those of rhs.
 string operator+(const string& lhs, const char* rhs);
 string operator+(const char* lhs, const string& rhs);
-string operator+(string str, char to_add);
+string operator+ (char lhs, const string& rhs);
+string operator+ (const string& lhs, char rhs);
 
 #endif
