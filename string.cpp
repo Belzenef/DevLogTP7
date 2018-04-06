@@ -45,6 +45,7 @@
 			size_ = model.size_;
   		reserved_space_ = model.reserved_space_;
 			char* ptr = new char[reserved_space_];
+      
 			//copying the content of model
 			for (int i=0; i<size_ + 1; ++i ){
 				ptr[i]=model.pointer_[i];
@@ -61,12 +62,11 @@
 
   // Destructor
   string::~string(){ 
-    delete[] pointer_;//Only the space for the null terminated string was allocated
+    delete[] pointer_;//only the space for the null terminated string was allocated
   }
   
   // Operator=
   string& string::operator= (const string& str){
-	//Assigns a new value to the string, replacing its current contents.
 		try{
 			delete[] pointer_;
 
@@ -90,7 +90,7 @@
 	}
 
   string& string::operator= (const char* s){
-  // finding size of s
+  //finding size of s
     try{
       int size=0;
       while(s[size] != '\0'){ //s is null-terminated
@@ -105,7 +105,7 @@
         pointer_[i]=s[i];
       }
 
-      size_=size-1; // same size than s without null character '\0'
+      size_=size-1; //same size than s without null character '\0'
       reserve(size);
       return (*this);
     
@@ -116,7 +116,6 @@
       throw std::bad_alloc();
     }
   }
-
 
   string& string::operator=(char c){
   //Precondition : c is not null
@@ -142,11 +141,9 @@
   
   // Capacity
   size_t string::size() const noexcept{
- 	//Returns the size of the string, in terms of bytes, from the first character to the first null-character encountered (excluded). Synonym to length().
 		return size_;}
 
   size_t string::length() const noexcept{
-    //Synonym of size()
     return size_;}
     
   size_t string::max_size() const noexcept{
@@ -194,13 +191,12 @@
     }
   }
 
-
   size_t string::capacity() const noexcept{
     return reserved_space_;
   }
 
-
   void string::reserve(size_t n){
+    
     //catch the length_error exceptions
     if(n>MAX_SIZE){
       throw std::length_error("requested space to reserve is greater than the maximum possible size");
@@ -226,21 +222,16 @@
     }
   }
 
-
   void string::clear() noexcept{
-  // Erases the contents of the string, which becomes an empty string (with a length of 0 characters).
 		resize( 0);	
 	}
-
 
   bool string::empty() const noexcept{
     return (size_==0); //the string is empty <=> string's size=0
   }
-
   
   // String Operations
 	const char* string::c_str() const noexcept {
-  //Returns a pointer to an array that contains a null-terminated sequence of characters representing the current value of the string object. 
 		return pointer_;
 	}
 
@@ -268,7 +259,6 @@
       throw std::bad_alloc();
     }
   }
-
 
   string operator+(const string& lhs, const char* rhs){    
     try{
