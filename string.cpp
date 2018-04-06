@@ -42,9 +42,10 @@
   //Copy constructor
   string::string(const string& model){ 
 		try{
-		size_ = model.size_;
+			size_ = model.size_;
   		reserved_space_ = model.reserved_space_;
 			char* ptr = new char[reserved_space_];
+			//copying the content of model
 			for (int i=0; i<size_ + 1; ++i ){
 				ptr[i]=model.pointer_[i];
 			}
