@@ -1,9 +1,9 @@
 # DevLogTP7
-Groupe : LBATH Hanâ - JACQUEMET Elise - VANEL Guillaume
+Group n°9 : LBATH Hanâ - JACQUEMET Elise - VANEL Guillaume
 
-Implémentation d'une classe de type String
-Notre dépôt contient les fichiers .h et .cpp de la classe,
-ainsi que les trois fichiers .cpp ayant servi à réaliser nos tests.
+Implementing a string class.
+Our deposit contains the .h and .cpp files of the string class,
+as well as the three .cpp files we used for our tests.
 
-la documentation officielel est disponible sur :
+The official documentation can be found here :
 http://www.cplusplus.com/reference/string/string/
